@@ -1,34 +1,31 @@
-# Skittle
+# MixTape
 
-**A randomizer for Super Mario World romhacks.** Roll any hack from the SMWDB / SMW Central catalog and get dropped straight into a random playable level — no overworld navigation needed.
+A Windows desktop app for building and playing curated mixes of Super Mario World ROM hacks. Point it at your clean SMW base ROM, pick some hacks and levels, and MixTape patches them on the fly, launches your emulator, and moves you through the run without any overworld or menus in between.
+
+## Main features
+
+### Builder
+- Assemble a run from **KaizOFF** or local ROM folders — mix sources freely inside a single run.
+- **Scripted runs** — pick the exact hacks and levels yourself.
+- **Seeded runs** — pick the hacks and (optionally) curated level pools; a seeded RNG deterministically rolls a set. Same seed always plays the same levels.
+- **Per-run description + author** so credits and context ride along with the mix.
+
+### Runner
+- Paste a base64 share code or drop in a `.mixtape` file — MixTape resolves the hacks, patches them, and drops you into the run.
+- Patches and hashes cache after the first play, so re-runs are instant.
+
+### Sharing
+- **Share code** — a base64 string encoding the entire run (name, author, description, hacks, levels, graph, goals). Paste it into anyone else's copy of MixTape.
+- **Discord Share** — one click copies a formatted message (`**Mix name** by Author — Description` + fenced code block) to your clipboard.
+- **Portable mix** (`.mixtape` file) — a zip carrying the BPS patch for every hack, so the recipient can play the mix even without the source hacks locally.
+
+### Emulator + hardware support
+- **RetroArch** with the snes9x core — auto-launched with the current ROM.
+- **FXPak Pro** via SNI — play on real hardware, with automatic reconnect on cart hiccups and retries on flaky USB frames.
 
 ## Download
 
-Head to the **[Releases](../../releases)** page and grab the latest `Skittle-vX.Y.Z-win64-portable.zip`.
-
-Unzip and read `FIRST-RUN.txt` for setup. The whole folder is self-contained — copy/move it anywhere.
-
-## Requirements
-
-- **Windows x64**
-- **[RetroArch](https://www.retroarch.com/?page=platforms)** with an SNES core (`snes9x_libretro` recommended; `bsnes_mercury` also works). Install RetroArch, then use its Online Updater → Core Downloader to grab a core.
-- **A clean Super Mario World base ROM** — your own copy. We can't legally distribute SMW; you provide your own `.smc`.
-
-Once you've installed RetroArch + a core and have your SMW.smc, launch `skittle.exe` and point the Settings page at all three (RetroArch path, core path, SMW base ROM). Then refresh the catalog and roll.
-
-## What it does
-
-- Picks a random hack from a local catalog of SMWDB + SMW Central entries (filterable by category, difficulty, year, HoF status).
-- Patches the hack on the fly with a custom **No-Overworld** asar patch that skips the title/overworld and drops you straight into a chosen playable level.
-- Plays it in your RetroArch.
-
-## Known limits
-
-- Some hacks (especially older ones SMW Central / SMWDB tag as `[BAD-emu]`) may not behave correctly under emulation. We aim to support most, but not every hack will work.
-- You're playing a single level out of the larger hack's context — story, mechanics, or hints introduced in other levels will be missed by design.
-
-Be kind to the original hack authors. They put real work in.
-
-## Project
-
-The source code lives in a separate private repository. This repo exists purely to host the public release downloads.
+Portable zips ship as `MixTape-v<version>-win64-portable.zip` from
+[github.com/bucketofwetsocks/mixtape-releases](https://github.com/bucketofwetsocks/mixtape-releases).
+Unzip, run `mixtape.exe`, point Settings at your clean SMW base ROM,
+refresh the catalog, and go.
